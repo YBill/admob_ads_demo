@@ -293,6 +293,17 @@ class _AdmobPageState extends State<AdmobPage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Admob'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.more_horiz_outlined),
+            onPressed: () {
+              MobileAds.instance.openAdInspector((error) {
+                // Error will be non-null if ad inspector closed due to an error.
+                print('AdmobPage: openAdInspector error = $error');
+              });
+            },
+          ),
+        ],
       ),
       body: Stack(
         children: [
