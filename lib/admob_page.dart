@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_ads_demo/app_lifecycle_reactor.dart';
+import 'package:flutter_ads_demo/app_open_ad_manager.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AdmobPage extends StatefulWidget {
@@ -269,6 +271,10 @@ class _AdmobPageState extends State<AdmobPage> {
   @override
   void initState() {
     super.initState();
+    final appOpenAdManager = AppOpenAdManager();
+    AppLifecycleReactor appLifecycleReactor = AppLifecycleReactor(appOpenAdManager: appOpenAdManager);
+    appLifecycleReactor.listenToAppStateChanges();
+    appOpenAdManager.loadAd();
   }
 
   @override
