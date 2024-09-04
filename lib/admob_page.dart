@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_ads_demo/app_lifecycle_reactor.dart';
 import 'package:flutter_ads_demo/app_open_ad_manager.dart';
+import 'package:flutter_ads_demo/custom_native_ads_page.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AdmobPage extends StatefulWidget {
@@ -315,33 +316,59 @@ class _AdmobPageState extends State<AdmobPage> {
                       _loadBannerAd();
                     },
                     child: const Text(
-                      'Show Banner',
+                      'Banner',
                       style: TextStyle(color: Colors.black, fontSize: 16),
                     )),
-                TextButton(
-                    onPressed: () {
-                      _loadNativeAd();
-                    },
-                    child: const Text(
-                      'Show Native',
-                      style: TextStyle(color: Colors.black, fontSize: 16),
-                    )),
-                TextButton(
-                    onPressed: () {
-                      _loadInterstitialAd();
-                    },
-                    child: const Text(
-                      'Show Interstitial',
-                      style: TextStyle(color: Colors.black, fontSize: 16),
-                    )),
-                TextButton(
-                    onPressed: () {
-                      _loadRewardedAd();
-                    },
-                    child: const Text(
-                      'Show Rewarded',
-                      style: TextStyle(color: Colors.black, fontSize: 16),
-                    )),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextButton(
+                          onPressed: () {
+                            _loadNativeAd();
+                          },
+                          child: const Text(
+                            'Native Templates',
+                            style: TextStyle(color: Colors.black, fontSize: 16),
+                          )),
+                    ),
+                    Expanded(
+                      child: TextButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
+                              return const CustomNativeAdsPage();
+                            }));
+                          },
+                          child: const Text(
+                            'Platform setup',
+                            style: TextStyle(color: Colors.black, fontSize: 16),
+                          )),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextButton(
+                          onPressed: () {
+                            _loadInterstitialAd();
+                          },
+                          child: const Text(
+                            'Interstitial',
+                            style: TextStyle(color: Colors.black, fontSize: 16),
+                          )),
+                    ),
+                    Expanded(
+                      child: TextButton(
+                          onPressed: () {
+                            _loadRewardedAd();
+                          },
+                          child: const Text(
+                            'Rewarded',
+                            style: TextStyle(color: Colors.black, fontSize: 16),
+                          )),
+                    ),
+                  ],
+                ),
                 TextButton(
                     onPressed: () {
                       _loadRewardedInterstitialAd();

@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Flutter Ads'),
+        title: const Text('Platform Ads'),
       ),
       body: Center(
         child: Column(
